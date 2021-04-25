@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/v0-OpenSource-FF0033.svg)
 
 ## Introduction
-.
+A simple LINE bot with some useful function.
 
 ## License
 MIT License.
