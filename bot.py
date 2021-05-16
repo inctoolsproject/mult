@@ -63,12 +63,12 @@ print("""
 ┃ ⋙ Last update time : 2021/04/03 (UTC+08)
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━""")
 ####################################################
-cl = LINE()
+cl = LINE("soriyak962@naymeo.com","rahmagila123")
 ####################################################
 clMID = cl.profile.mid
 oepoll = OEPoll(cl)
 set = {
-    "owner": ["u8b9d115e85202db06eb798e8c1b40ae9", "udfd61c9d62794fcae8323841b1fc4b83"],
+    "owner": ["u8b9d115e85202db06eb798e8c1b40ae9", "u9be8862cb884bde356d0e41fb6850514"],
     "ccmd": {
         "liffurl": [".liffurl"],
         "time": [".time"],
@@ -98,7 +98,7 @@ set2 = {
     "debugall": True
 }
 test = {
-    "debug": ["c304a79872bfa483c98fbce9c17e57785"],
+    "debug": ["c846fec69c4f52feb32f00cf8970a95bc"],
     "debugbd": "rbd07ffb48c082bab980cfd02be9e3837",
     "2": True
 }
@@ -152,13 +152,13 @@ def lineBot(op):
             return
         if op.type in [5]:
             cl.findAndAddContactsByMid(op.param1)
-            cl.sendMention(op.param1, f"感謝 @! 加入我為好友！\nBot Mid: {clMID}\nYour Mid: {op.param1}", [op.param1])
+            cl.sendMention(op.param1, f"thank @! Join me as a friend!\nBot Mid: {clMID}\nYour Mid: {op.param1}", [op.param1])
         elif op.type in [13, 124]:
             if clMID in op.param3:
                 if set2["jg"] == True:
                     cl.acceptGroupInvitation(op.param1)
                     group = cl.getGroup(op.param1)
-                    cl.sendMention(op.param1, f"加入成功\n[群組名稱] {str(group.name)}\n[人數] {str(len(group.members))}人\n[GID] {str(group.id)}\n[Invr] @!", [op.param2])
+                    cl.sendMention(op.param1, f"Join success\n[Group name] {str(group.name)}\n[Number] {str(len(group.members))}people\n[GID] {str(group.id)}\n[Invr] @!", [op.param2])
             else:
                 cl.sendMention(op.param1, "ya @! group inv @!", [op.param2, op.param3])
         elif op.type in [15,128]:
@@ -170,7 +170,7 @@ def lineBot(op):
         elif op.type in [22]:
             if clMID in op.param3:
                 room = cl.getRoom(op.param1)
-                cl.sendMention(op.param1, f"加入成功\n[人數] {str(len(room.contacts))}人\n[RID] {str(room.mid)}\n[Invr] @!", [op.param2])
+                cl.sendMention(op.param1, f"Join success\n[Number] {str(len(room.contacts))}people\n[RID] {str(room.mid)}\n[Invr] @!", [op.param2])
                 if set2["lr"]:
                     cl.leaveRoom(op.param1)
             else:
@@ -229,107 +229,107 @@ def lineBot(op):
                             group = cl.findGroupByTicket(ticket_id)
                             cl.acceptGroupInvitationByTicket(
                                 group.id, ticket_id)
-                            cl.relatedMessage(to, "加入成功\n[群組名稱]{}\n[人數]{}人\n[群組網址ID]{}\n[GID]{}".format(
+                            cl.relatedMessage(to, "Join success\n[Group name]{}\n[Number]{}人\n[Group URL ID]{}\n[GID]{}".format(
                                 str(group.name), str(len(group.members)), str(ticket_id), str(group.id)), msg_id)
                         except Exception as e:
                             if str(e.reason) == "request blocked":
-                                cl.relatedMessage(to, "目前帳號規制中", msg_id)
+                                cl.relatedMessage(to, "Current account regulation", msg_id)
                             elif "Ticket not found" in str(e.reason):
-                                cl.relatedMessage(to, "此網址已失效", msg_id)
+                                cl.relatedMessage(to, "This URL has been invalidated", msg_id)
                             elif "Prevented join by group ticket" in str(e.reason):
-                                cl.relatedMessage(to, "該群不開放網址加入", msg_id)
+                                cl.relatedMessage(to, "The group does not open the URL to join", msg_id)
                             else:
-                                cl.relatedMessage(to, "加入錯誤\n"+str(e), msg_id)
+                                cl.relatedMessage(to, "Income\n"+str(e), msg_id)
                         time.sleep(0.5)
             if msg.contentType == 6:
                 timeNow = datetime.now(tz=pytz.timezone("Asia/Taipei")).strftime('%Y/%m/%d %H:%M:%S')
                 b = msg.contentMetadata['GC_EVT_TYPE']
                 c = msg.contentMetadata["GC_MEDIA_TYPE"]
                 if c == 'AUDIO' and b == "S":
-                    arg = "開始通話"
-                    arg += "\n類型: 語音"
-                    arg += "\n發起者: @!"
-                    arg += f"\n發起時間: {timeNow}"
+                    arg = "Start call"
+                    arg += "\nTypes of: voice"
+                    arg += "\nInitiator: @!"
+                    arg += f"\nStart time: {timeNow}"
                     cl.replyMention(msg_id, to, arg, [sender])
                 if c == 'VIDEO' and b == "S":
-                    arg = "開始通話"
-                    arg += "\n類型: 視訊"
-                    arg += "\n發起者: @!"
-                    arg += f"\n發起時間: {timeNow}"
+                    arg = "Start call"
+                    arg += "\nTypes of: Video"
+                    arg += "\nInitiator: @!"
+                    arg += f"\nStart time: {timeNow}"
                     cl.replyMention(msg_id, to, arg, [sender])
                 if c == 'LIVE' and b == "S":
-                    arg = "開始通話"
-                    arg += "\n類型: LIVE"
-                    arg += "\n發起者: @!"
-                    arg += f"\n發起時間: {timeNow}"
+                    arg = "Start call"
+                    arg += "\nTypes of: LIVE"
+                    arg += "\nInitiator: @!"
+                    arg += f"\nStart time: {timeNow}"
                     cl.replyMention(msg_id, to, arg, [sender])
                 else:
                     mills = int(msg.contentMetadata["DURATION"])
                     seconds = (mills / 1000) % 60
                     if c == "AUDIO" and b == "E":
-                        arg = "結束通話"
-                        arg += "\n類型: 語音"
-                        arg += "\n發起者: @!"
-                        arg += f"\n結束時間: {timeNow}"
-                        arg += f"\n持續時間: {seconds} 秒"
+                        arg = "End talk"
+                        arg += "\nTypes of: voice"
+                        arg += "\nInitiator: @!"
+                        arg += f"\nEnd Time: {timeNow}"
+                        arg += f"\nduration: {seconds} 秒"
                         cl.replyMention(msg_id, to, arg, [sender])
                     if c == "VIDEO" and b == "E":
-                        arg = "結束通話"
-                        arg += "\n類型: 視訊"
-                        arg += "\n發起者: @!"
-                        arg += f"\n結束時間: {timeNow}"
-                        arg += f"\n持續時間: {seconds} 秒"
+                        arg = "End talk"
+                        arg += "\nTypes of: Video"
+                        arg += "\nInitiator: @!"
+                        arg += f"\nEnd Time: {timeNow}"
+                        arg += f"\nduration: {seconds} 秒"
                         cl.replyMention(msg_id, to, arg, [sender])
                     if c == "LIVE" and b == "E":
-                        arg = "結束通話"
-                        arg += "\n類型: LIVE"
-                        arg += "\n發起者: @!"
-                        arg += f"\n結束時間: {timeNow}"
-                        arg += f"\n持續時間: {seconds} 秒"
+                        arg = "End talk"
+                        arg += "\nTypes of: LIVE"
+                        arg += "\nInitiator: @!"
+                        arg += f"\nEnd Time: {timeNow}"
+                        arg += f"\nduration: {seconds} second"
                         cl.replyMention(msg_id, to, arg, [sender])
             if sender in set["owner"]:
                 if cmd in ['help', 'allcmd', 'cmds', '幫助', '指令表', '指令']:
-                    ret_ = "[一般指令]"
+                    ret_ = "[General instruction]"
                     for a in set['ccmd']:
                         ret_ += "\n{}(key:{})".format(set['ccmd'][a], a)
-                    ret_ += "\n\n[其他指令]\n[收回訊息]\nun:number\n[權限調整]\nop:(@/mid)s\n[開關功能方法]\nset:function name\n[客制指令方法]\n+)ccmd:key:cmd\n-)dcmd:cmd"
+                    ret_ += "\n\n[Other instructions]\n[Retrieve message]\nun:number\n[Permission adjustment]\nop:(@/mid)s\n[Switch function method]\nset:function name\n[Customary command method]\n+)ccmd:key:cmd\n-)dcmd:cmd"
                     cl.relatedMessage(to, ret_, msg_id)
                 elif cmd == 'test1':
                     uda = cl.getContact(sender)
                     if uda.pictureStatus is None:
-                        uda0 = "未"
+                        uda0 = "not"
                         uda1 = "https://upload.cc/i1/2021/02/11/b0PkA1.png"
                     else:
-                        uda0 = "已"
+                        uda0 = "Already"
                         uda1 = "https://obs.line-scdn.net/" + uda.pictureStatus
                     if uda.videoProfile is None:
-                        uda2 = "未"
+                        uda2 = "not"
                     else:
-                        uda2 = "已"
+                        uda2 = "Already"
                     if uda.musicProfile is None:
-                        uda3 = "未"
+                        uda3 = "not"
                     else:
-                        uda3 = "已"
+                        uda3 = "Already"
                     if uda.createdTime == 0:
-                        uda4 = "未"
-                        uda5 = "尚未加入好友"
+                        uda4 = "not"
+                        uda5 = "No friends have already added"
                     else:
-                        uda4 = "已"
+                        uda4 = "Already"
                         uda5 = time.strftime(
                             "%Y/%m/%d %H:%M:%S", time.localtime(int(uda.createdTime) / 1000))
                     if uda.favoriteTime == 0:
-                        uda6 = "未"
-                        uda7 = "尚未加入喜愛"
+                        uda6 = "not"
+                        uda7 = "Have not joined"
                     else:
-                        uda6 = "已"
+                        uda6 = "Already"
                         uda7 = time.strftime(
                             "%Y/%m/%d %H:%M:%S", time.localtime(int(uda.favoriteTime) / 1000))
                     if sender in set["owner"]:
-                        uda8 = "有"
-                        uda9 = "不是"
+                        uda8 = "Have"
+                        uda9 = "Not"
                     else:
-                        uda8 = "沒有"
-                        uda9 = "是"
+                        uda8 = "No"
+                        uda9 = "Yes"
                     gidsl = []
                     for id in cl.getGroupIdsJoined():
                         if sender in [contact.mid for contact in cl.getGroup(id).members]:
@@ -393,7 +393,7 @@ def lineBot(op):
                                                             },
                                                             {
                                                                 "type": "text",
-                                                                "text": "用戶資訊-基本",
+                                                                "text": "User information-Basic",
                                                                 "size": "xl",
                                                                 "color": "#ffffff",
                                                                 "weight": "bold",
@@ -417,7 +417,7 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "名稱",
+                                                                        "text": "name",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
@@ -433,7 +433,7 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "定名",
+                                                                        "text": "name",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
@@ -449,7 +449,7 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "個簽字數",
+                                                                        "text": "Signature number",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
@@ -465,12 +465,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "靜態頭貼狀態",
+                                                                        "text": "Static head sticker",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}裝設".format(uda0),
+                                                                        "text": "{}Mount".format(uda0),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -481,12 +481,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "動態頭貼狀態",
+                                                                        "text": "Dynamic head stickers",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}裝設".format(uda2),
+                                                                        "text": "{}Mount".format(uda2),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -497,12 +497,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "背景音樂狀態",
+                                                                        "text": "Background music state",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}裝設".format(uda3),
+                                                                        "text": "{}Mount".format(uda3),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -544,7 +544,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "好友直連",
+                                                                        "text": "Friend directly",
                                                                         "color": "#FF0000",
                                                                         "flex": 0,
                                                                         "offsetTop": "-2px",
@@ -612,7 +612,7 @@ def lineBot(op):
                                                             },
                                                             {
                                                                 "type": "text",
-                                                                "text": "用戶資訊-進階",
+                                                                "text": "User information-Advancement",
                                                                 "size": "xl",
                                                                 "color": "#ffffff",
                                                                 "weight": "bold",
@@ -636,12 +636,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "好友狀態",
+                                                                        "text": "Friend status",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}加入".format(uda4),
+                                                                        "text": "{}Join".format(uda4),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -652,7 +652,7 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "加入好友時間",
+                                                                        "text": "Join your friends",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
@@ -667,12 +667,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "最愛狀態",
+                                                                        "text": "Favorite state",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}加入".format(uda6),
+                                                                        "text": "{}Join".format(uda6),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -683,7 +683,7 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "加入最愛時間",
+                                                                        "text": "Join the favorite time",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
@@ -698,12 +698,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "權限狀態",
+                                                                        "text": "Authority status",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}權限".format(uda8),
+                                                                        "text": "{}Authority".format(uda8),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -714,12 +714,12 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "黑單狀態",
+                                                                        "text": "Black single status",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}黑單".format(uda9),
+                                                                        "text": "{}Black single".format(uda9),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -730,7 +730,7 @@ def lineBot(op):
                                                                 "contents": [
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "共同群組數量",
+                                                                        "text": "Common group quantity",
                                                                         "weight": "bold"
                                                                     },
                                                                     {
@@ -764,10 +764,10 @@ def lineBot(op):
                 elif cmd == 'test2':
                     if test["2"] == True:
                         urii = "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip11.jpg"
-                        urit = "line://app/1655527991-3Lbo8OkW?type=text&text=我要關閉"
+                        urit = "line://app/1655527991-3Lbo8OkW?type=text&text=I want to close"
                     else:
                         urii = "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip10.jpg"
-                        urit = "line://app/1655527991-3Lbo8OkW?type=text&text=我要打開"
+                        urit = "line://app/1655527991-3Lbo8OkW?type=text&text=I want to open"
                     dat = {
                         "type": "flex",
                         "altText": "BAO?",
@@ -779,7 +779,7 @@ def lineBot(op):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "群組智障",
+                                        "text": "Group intelligence",
                                         "weight": "bold",
                                         "size": "xl"
                                     },
@@ -807,10 +807,10 @@ def lineBot(op):
                         }
                     }
                     sendTemplate(to, dat)
-                elif cmd == '我要打開':
+                elif cmd == 'I want to open':
                     test["2"] = True
                     cl.relatedMessage(to, "ok\nTrue", msg_id)
-                elif cmd == '我要關閉':
+                elif cmd == 'I want to close':
                     test["2"] = False
                     cl.relatedMessage(to, "ok\nFalse", msg_id)
                 elif cmd == 'test3':
@@ -825,14 +825,14 @@ def lineBot(op):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "繳費通知",
+                                        "text": "Payment notice",
                                         "weight": "bold",
                                         "color": "#1DB446",
                                         "size": "sm"
                                     },
                                     {
                                         "type": "text",
-                                        "text": "繳費成功",
+                                        "text": "Payment",
                                         "weight": "bold",
                                         "size": "xxl",
                                         "margin": "md"
@@ -853,7 +853,7 @@ def lineBot(op):
                                                 "contents": [
                                                     {
                                                         "type": "text",
-                                                        "text": "永久半垢",
+                                                        "text": "Permanent semi-scale",
                                                         "size": "sm",
                                                         "color": "#555555",
                                                         "flex": 0
@@ -881,7 +881,7 @@ def lineBot(op):
                                                 "contents": [
                                                     {
                                                         "type": "text",
-                                                        "text": "數量",
+                                                        "text": "Quantity",
                                                         "size": "sm",
                                                         "color": "#555555"
                                                     },
@@ -900,7 +900,7 @@ def lineBot(op):
                                                 "contents": [
                                                     {
                                                         "type": "text",
-                                                        "text": "總計",
+                                                        "text": "total",
                                                         "size": "sm",
                                                         "color": "#555555"
                                                     },
@@ -919,7 +919,7 @@ def lineBot(op):
                                                 "contents": [
                                                     {
                                                         "type": "text",
-                                                        "text": "付款方式:現金",
+                                                        "text": "payment method:cash",
                                                         "size": "sm",
                                                         "color": "#555555"
                                                     },
@@ -938,7 +938,7 @@ def lineBot(op):
                                                 "contents": [
                                                     {
                                                         "type": "text",
-                                                        "text": "找零",
+                                                        "text": "Zero",
                                                         "size": "sm",
                                                         "color": "#555555"
                                                     },
@@ -964,7 +964,7 @@ def lineBot(op):
                                         "contents": [
                                             {
                                                 "type": "text",
-                                                "text": "訂單編號",
+                                                "text": "Order number",
                                                 "size": "xs",
                                                 "color": "#aaaaaa",
                                                 "flex": 0
@@ -1180,21 +1180,21 @@ def lineBot(op):
                     txt = text[4:]
                     try:
                         exec(str(txt))
-                        print('\n===警告===\n特殊指令使用\n指令:cmd\n觸發文字:{}\n使用者:{}\n位置:{}\n===結束===\n'.format(
+                        print('\n===caveat===\nSpecial instructions\ninstruction:cmd\nTrigger text:{}\nuser:{}\nposition:{}\n===the end===\n'.format(
                             text, sender, to))
                     except Exception as e:
-                        cl.relatedMessage(to, "執行命令錯誤\n"+str(e), msg_id)
+                        cl.relatedMessage(to, "Execute command error\n"+str(e), msg_id)
                 elif cmd == 'cra':
                     a = cl.getChatRoomAnnouncements(to)
                     if a == []:
-                        cl.relatedMessage(to, "找不到", msg_id)
+                        cl.relatedMessage(to, "Can't find", msg_id)
                     else:
                         for b in a:
                             c = b.contents
                             d = c.link
                             e = c.text
                             cl.replyMention(
-                                msg_id, to, '[公告內容]\n內容:{}\n公告者:@!\n連結:{}'.format(e, d), [b.creatorMid])
+                                msg_id, to, '[Announcement]\ncontent:{}\nBulletin:@!\nlink:{}'.format(e, d), [b.creatorMid])
                 elif cmd.startswith("cra:"):
                     a = text[4:]
                     b = ChatRoomAnnouncementContents()
@@ -1203,28 +1203,28 @@ def lineBot(op):
                     b.link = "line://nv/chatMsg?chatId={}&messageId={}".format(
                         to, msg_id)
                     cl.createChatRoomAnnouncement(to, 0, b)
-                    cl.relatedMessage(to, "成功\n內容:{}".format(a), msg_id)
+                    cl.relatedMessage(to, "success\ncontent:{}".format(a), msg_id)
                 elif cmd == "ccra":
                     a = cl.getChatRoomAnnouncements(to)
                     if a == []:
-                        cl.relatedMessage(to, "找不到", msg_id)
+                        cl.relatedMessage(to, "Can't find", msg_id)
                     else:
                         for b in a:
                             cl.removeChatRoomAnnouncement(
                                 to, b.announcementSeq)
-                        cl.relatedMessage(to, "完成", msg_id)
-                elif cmd == "抽妹子":
+                        cl.relatedMessage(to, "carry out", msg_id)
+                elif cmd == "Pumper":
                     paths = []
                     for picpaths in os.walk('./images'):
                         paths.append(picpaths)
                     sample = random.choice(paths)
-                    #cl.sendReplyMessage(msg.id, to, "選取的檔案:"+sample)
-                    #print("\n\n選取的檔案："+sample+"\n\n")
-                    cl.sendImage(to, sample[0]+"/"+random.choice(sample[2]))
-                elif cmd == "數妹子":
+                    #cl.sendReplyMessage(msg.id, to, "Selected file:"+sample)
+                    #print("\n\nSelected file: "+ Sample +" \ n \ n ")
+                    Cl.sendImage (to, SAMPle[0]+"/"+random.choice(sample[2]))
+                elif cmd == "Sis":
                     meizi = sum(len(files) for _, _, files in os.walk('./images'))
                     cl.relatedMessage(to, str(meizi), msg_id)
-                elif cmd == "清妹子":
+                elif cmd == "Sister":
                     fileDir = r"./images"
                     fileExt = r".jpg"
                     w = [_ for _ in os.listdir(fileDir) if _.endswith(fileExt)]
@@ -1245,7 +1245,7 @@ def lineBot(op):
                     timeNow = datetime.now(tz=tz)
                     day = ["Sunday", "Monday", "Tuesday",
                            "Wednesday", "Thursday", "Friday", "Saturday"]
-                    hari = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
+                    hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
                     hr = timeNow.strftime("%A")
                     bln = timeNow.strftime("%m")
                     for i in range(len(day)):
@@ -1256,19 +1256,19 @@ def lineBot(op):
                     cl.relatedMessage(to, readTime, msg_id)
                 elif cmd in set['ccmd']['lasttag']:
                     if set["lastt"] == {}:
-                        cl.relatedMessage(to, "找不到標註訊息", msg_id)
+                        cl.relatedMessage(to, "Can't find a label message", msg_id)
                     else:
-                        cl.relatedMessage(to, "標住者:{}({})\n時間:{}\n位置:{}".format(cl.getContact(
+                        cl.relatedMessage(to, "Caller:{}({})\ntime:{}\nposition:{}".format(cl.getContact(
                             set["lastt"]["mid"]).displayName, set["lastt"]["mid"], set["lastt"]["time"], set["lastt"]["to"]), set["lastt"]["msgid"])
                 elif cmd in set['ccmd']['logout']:
-                    cl.relatedMessage(to, "將自動幫您登出機器", msg_id)
-                    cl.relatedMessage(to, "[提示]\n已經自動登出後台伺服器", msg_id)
+                    cl.relatedMessage(to, "Will automatically log out the machine", msg_id)
+                    cl.relatedMessage(to, "[prompt]\nAlready automatically logged out of the background server", msg_id)
                     os._exit(0)
                 elif cmd in set['ccmd']['oplist']:
                     if set["owner"] == []:
-                        cl.relatedMessage(to, "無權限者", msg_id)
+                        cl.relatedMessage(to, "No permission", msg_id)
                     else:
-                        mc = "[權限名單]"
+                        mc = "[Permissions list]"
                         arr = []
                         mention = "@YTER "
                         for mi_d in set["owner"]:
@@ -1278,7 +1278,7 @@ def lineBot(op):
                             arrData = {'S': slen, 'E': elen, 'M': mi_d}
                             arr.append(arrData)
                             mc += mention
-                        cl.sendReplyMessage(msg_id, to, mc+"\n[結束]", contentMetadata={
+                        cl.sendReplyMessage(msg_id, to, mc+"\n[the end]", contentMetadata={
                                             'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, contentType=0)
                 elif cmd in set['ccmd']['restart']:
                     python = sys.executable
@@ -1288,40 +1288,40 @@ def lineBot(op):
                         cl.kickoutFromGroup(msg.to, ["test"])
                     except Exception as e:
                         if e.reason == "request blocked":
-                            aa = "規制"
+                            aa = "Regulation"
                         else:
-                            aa = "可以執行"
+                            aa = "Can be implemented"
                     try:
                         cl.inviteIntoGroup(msg.to, ["test"])
-                        bb = "可以執行"
+                        bb = "Can be implemented"
                     except:
-                        bb = "規制"
+                        bb = "Regulation"
                     try:
                         cl.findAndAddContactsByMid("test")
                     except Exception as e:
                         if e.reason == "request blocked":
-                            cc = "規制"
+                            cc = "Regulation"
                         else:
-                            cc = "可以執行"
+                            cc = "Can be implemented"
                     try:
                         cl.acceptGroupInvitationByTicket("test", "test")
                     except Exception as e:
                         if e.reason == "request blocked":
-                            dd = "規制"
+                            dd = "Regulation"
                         else:
-                            dd = "可以執行"
-                    cl.relatedMessage(to, "ΞΞΞΞΞ〘機器狀態查詢〙ΞΞΞΞΞ\n※踢人狀態:" + str(aa) + "\n※邀請狀態:" + str(
-                        bb) + "\n※取消狀態:可以執行\n※加友狀態:" + str(cc) + "\n※網址狀態:" + str(dd), msg_id)
+                            dd = "Can be implemented"
+                    cl.relatedMessage(to, "ΞΞΞΞΞ〘Machine status query〙ΞΞΞΞΞ\n※Kick:" + str(aa) + "\n※Invitation status:" + str(
+                        bb) + "\n※Cancel state:Can be implemented\n※Advance:" + str(cc) + "\n※URL status:" + str(dd), msg_id)
                 elif cmd in set['ccmd']['findoa']:
-                    oas = "[非官]"
+                    oas = "[Nonmittent]"
                     if msg.toType == 1:
                         room = cl.getRoom(to)
                         for contact in room.contacts:
                             if contact.capableBuddy:
                                 oas += "\n{}\n{}".format(cl.getContact(
                                     contact.mid).displayName, contact.mid)
-                        if oas == "[非官]":
-                            cl.relatedMessage(to, "找不到", msg_id)
+                        if oas == "[Nonmittent]":
+                            cl.relatedMessage(to, "Can't find", msg_id)
                         else:
                             cl.relatedMessage(to, oas, msg_id)
                     elif msg.toType == 2:
@@ -1330,8 +1330,8 @@ def lineBot(op):
                             if contact.capableBuddy:
                                 oas += "{}\n{}".format(cl.getContact(
                                     contact.mid).displayName, contact.mid)
-                        if oas == "[非官]":
-                            cl.relatedMessage(to, "找不到", msg_id)
+                        if oas == "[Nonmittent]":
+                            cl.relatedMessage(to, "Can't find", msg_id)
                         else:
                             cl.relatedMessage(to, oas, msg_id)
                 elif cmd in set['ccmd']['ttag']:
@@ -1450,27 +1450,27 @@ def lineBot(op):
                 elif cmd.startswith("set:"):
                     a = cmd[4:]
                     if a == 'all':
-                        b = "[所有設定]"
+                        b = "[All settings]"
                         for c in set2:
                             b += "\n{}:{}".format(c, str(set2[c]))
                         cl.relatedMessage(to, b, msg_id)
                     elif a == 'all on':
                         for b in set2:
                             set2[b] = True
-                        cl.relatedMessage(to, "成功\nAll:True", msg_id)
+                        cl.relatedMessage(to, "success\nAll:True", msg_id)
                     elif a == 'all off':
                         for b in set2:
                             set2[b] = False
-                        cl.relatedMessage(to, "成功\nAll:False", msg_id)
+                        cl.relatedMessage(to, "success\nAll:False", msg_id)
                     elif a in set2:
                         if set2[a] == True:
                             set2[a] = False
                             cl.relatedMessage(
-                                to, "成功\n{}:False".format(a), msg_id)
+                                to, "success\n{}:False".format(a), msg_id)
                         else:
                             set2[a] = True
                             cl.relatedMessage(
-                                to, "成功\n{}:True".format(a), msg_id)
+                                to, "success\n{}:True".format(a), msg_id)
                 elif cmd.startswith("debugadd:"):
                     x = cmd[9:]
                     if x in test["debug"]:
@@ -1487,15 +1487,15 @@ def lineBot(op):
                             for b in set['ccmd']:
                                 if a[2] in set['ccmd'][b]:
                                     cl.relatedMessage(
-                                        to, "指令重疊\nkey:{}\ncmd:{}".format(b, a[2]), msg_id)
+                                        to, "Overlap\nkey:{}\ncmd:{}".format(b, a[2]), msg_id)
                                     return
                                 elif a[2] in ['help', 'allcmd', 'cmds', '幫助', '指令表', '指令', 'cmd', 'un', 'set', 'ccmd', 'dcmd', 'op', 'cra', 'ccra', 'test1', 'test2', 'debugadd', 'test3', 'test4', 'test5', 'test6']:
                                     cl.relatedMessage(
-                                        to, "指令不合法\ncmd:{}".format(a[2]), msg_id)
+                                        to, "Instructions are not legal\ncmd:{}".format(a[2]), msg_id)
                                     return
                             set['ccmd'][a[1]].append(a[2])
                             cl.relatedMessage(
-                                to, "新增客制指令\nkey:{}\ncmd:{}".format(a[1], a[2]), msg_id)
+                                to, "New customization\nkey:{}\ncmd:{}".format(a[1], a[2]), msg_id)
                 elif cmd.startswith("dcmd:"):
                     a = cmd[5:]
                     if a != "":
@@ -1503,7 +1503,7 @@ def lineBot(op):
                             if a in set['ccmd'][b]:
                                 set['ccmd'][b].remove(a)
                                 cl.relatedMessage(
-                                    to, "刪除客制指令\nkey:{}\ncmd:{}".format(b, a), msg_id)
+                                    to, "Delete Custom Customs Directive\nkey:{}\ncmd:{}".format(b, a), msg_id)
                                 break
                 elif cmd.startswith("op:"):
                     mids_re = re.compile("u[a-z0-9]{32}")
@@ -1523,7 +1523,7 @@ def lineBot(op):
                             set["owner"].remove(target)
                         else:
                             set["owner"].append(target)
-                    cl.relatedMessage(to, "權限調整完畢", msg_id)
+                    cl.relatedMessage(to, "Permission adjustment", msg_id)
         elif op.type in [32,126]:
             cl.sendMention(op.param1, "oh @! group cancel inv @!", [op.param2, op.param3])
         elif op.type in [60]:
@@ -1537,13 +1537,13 @@ def lineBot(op):
             print(op)
     except Exception as e:
         # print(e)
-        error_class = e.__class__.__name__  # 取得錯誤類型
-        detail = e.args[0]  # 取得詳細內容
-        cal, exc, tb = sys.exc_info()  # 取得Call Stack
-        lastCallStack = traceback.extract_tb(tb)[-1]  # 取得Call Stack的最後一筆資料
-        fileName = lastCallStack[0]  # 取得發生的檔案名稱
-        lineNum = lastCallStack[1]  # 取得發生的行號
-        funcName = lastCallStack[2]  # 取得發生的函數名稱
+        error_class = e.__class__.__name__  # Number of error
+        detail = e.args[0]  # Details
+        cal, exc, tb = sys.exc_info()  # Obtain Call Stack
+        lastCallStack = traceback.extract_tb(tb)[-1]  # Obtain Call Stack Last information
+        fileName = lastCallStack[0]  # A file name acquired
+        lineNum = lastCallStack[1]  # Take the line number
+        funcName = lastCallStack[2]  # Get the name of the function
         errMsg = "File \"{}\", line {}, in {}: [{}] {}".format(
             fileName, lineNum, funcName, error_class, detail)
         print(errMsg)
