@@ -214,7 +214,7 @@ def lineBot(op):
                         set["lastt"]["mid"] = sender
                         set["lastt"]["to"] = to
                         set["lastt"]["time"] = datetime.now(tz=pytz.timezone(
-                            "Asia/Taipei")).strftime('%Y/%m/%d %H:%M:%S')
+                            "Asia/Jakarta")).strftime('%Y/%m/%d %H:%M:%S')
             if set2["lj"] == True:
                 if "/ti/g/" in text:
                     link_re = re.compile(
@@ -242,7 +242,7 @@ def lineBot(op):
                                 cl.relatedMessage(to, "Income\n"+str(e), msg_id)
                         time.sleep(0.5)
             if msg.contentType == 6:
-                timeNow = datetime.now(tz=pytz.timezone("Asia/Taipei")).strftime('%Y/%m/%d %H:%M:%S')
+                timeNow = datetime.now(tz=pytz.timezone("Asia/Jakarta")).strftime('%Y/%m/%d %H:%M:%S')
                 b = msg.contentMetadata['GC_EVT_TYPE']
                 c = msg.contentMetadata["GC_MEDIA_TYPE"]
                 if c == 'AUDIO' and b == "S":
@@ -1239,9 +1239,9 @@ def lineBot(op):
                         to, "https://liff.line.me/1655527991-3Lbo8OkW", msg_id)
                 elif cmd in set['ccmd']['time']:
                     cl.relatedMessage(to, datetime.now(tz=pytz.timezone(
-                        "Asia/Taipei")).strftime('%H:%M:%S'), msg_id)
+                        "Asia/Jakarta")).strftime('%H:%M:%S'), msg_id)
                 elif cmd in set['ccmd']['date']:
-                    tz = pytz.timezone("Asia/Taipei")
+                    tz = pytz.timezone("Asia/Jakarta")
                     timeNow = datetime.now(tz=tz)
                     day = ["Sunday", "Monday", "Tuesday",
                            "Wednesday", "Thursday", "Friday", "Saturday"]
