@@ -88,12 +88,12 @@ set = {
 }
 set2 = {
     "jg": True,
-    "lj": False,
+    "lj": True,
     "lg": True,
     "lr": False,
     "apro": False,
     "protect": True,
-    "getmid": False,
+    "getmid": True,
     "flwrm": False,
     "debugall": True
 }
@@ -229,7 +229,7 @@ def lineBot(op):
                             group = cl.findGroupByTicket(ticket_id)
                             cl.acceptGroupInvitationByTicket(
                                 group.id, ticket_id)
-                            cl.relatedMessage(to, "Join success\n[Group name]{}\n[Number]{}人\n[Group URL ID]{}\n[GID]{}".format(
+                            cl.relatedMessage(to, "Join success\n[Group name]{}\n[Number]{}people\n[Group URL ID]{}\n[GID]{}".format(
                                 str(group.name), str(len(group.members)), str(ticket_id), str(group.id)), msg_id)
                         except Exception as e:
                             if str(e.reason) == "request blocked":
@@ -271,14 +271,14 @@ def lineBot(op):
                         arg += "\nTypes of: voice"
                         arg += "\nInitiator: @!"
                         arg += f"\nEnd Time: {timeNow}"
-                        arg += f"\nduration: {seconds} 秒"
+                        arg += f"\nduration: {seconds} second"
                         cl.replyMention(msg_id, to, arg, [sender])
                     if c == "VIDEO" and b == "E":
                         arg = "End talk"
                         arg += "\nTypes of: Video"
                         arg += "\nInitiator: @!"
                         arg += f"\nEnd Time: {timeNow}"
-                        arg += f"\nduration: {seconds} 秒"
+                        arg += f"\nduration: {seconds} second"
                         cl.replyMention(msg_id, to, arg, [sender])
                     if c == "LIVE" and b == "E":
                         arg = "End talk"
@@ -291,7 +291,7 @@ def lineBot(op):
                 if cmd in ['help', 'allcmd', 'cmds', '幫助', '指令表', '指令']:
                     ret_ = "[General instruction]"
                     for a in set['ccmd']:
-                        ret_ += "\n{}(key:{})".format(set['ccmd'][a], a)
+                        ret_ += "\n{}(key: {})".format(set['ccmd'][a], a)
                     ret_ += "\n\n[Other instructions]\n[Retrieve message]\nun:number\n[Permission adjustment]\nop:(@/mid)s\n[Switch function method]\nset:function name\n[Customary command method]\n+)ccmd:key:cmd\n-)dcmd:cmd"
                     cl.relatedMessage(to, ret_, msg_id)
                 elif cmd == 'test1':
@@ -1149,7 +1149,7 @@ def lineBot(op):
                     dat = {
                         "type": "flex",
                         "altText": "BAO?",
-                        "contents": {"type": "carousel", "contents": [{"type": "bubble", "header": {"type": "box", "layout": "vertical", "contents": [{"type": "text", "text": "作者 - 資訊", "wrap": True, "color": "#9023FF"}]}, "hero": {"type": "image", "url": "https://i.imgur.com/zgu5fcI.jpg", "size": "full", "aspectMode": "cover", "aspectRatio": "5:3"}, "body": {"type": "box", "layout": "vertical", "spacing": "sm", "contents": [{"type": "text", "text": "管理人：\U00100302\U00100140H⃣⃝a⃝r⃝u⃝  S⃣⃝a⃝K", "wrap": True, "margin": "sm", "maxLines": 0, "size": "md", "color": "#ffffff"}]}, "footer": {"type": "box", "layout": "vertical", "contents": [{"type": "button", "style": "primary", "color": "#00bfff", "action": {"type": "uri", "label": "加作者好友", "uri": "line://ti/p/aDtv2LTeKS"}}, {"type": "separator", "margin": "md", "color": "#fe8cb7"}, {"type": "button", "style": "primary", "color": "#00bfff", "action": {"type": "uri", "label": "前端網站", "uri": "https://bot.harusakura.cc"}}, {"type": "separator", "margin": "md", "color": "#fe8cb7"}, {"type": "button", "style": "primary", "color": "#00bfff", "action": {"type": "uri", "label": "匿名留言", "uri": "https://harusakura.cc/whisper"}}]}, "styles": {"header": {"backgroundColor": "#fe8cb7"}, "hero": {"backgroundColor": "#fe8cb7"}, "body": {"backgroundColor": "#fe8cb7"}, "footer": {"backgroundColor": "#fe8cb7"}}}]}
+                        "contents": {"type": "carousel", "contents": [{"type": "bubble", "header": {"type": "box", "layout": "vertical", "contents": [{"type": "text", "text": "Author - News", "wrap": True, "color": "#9023FF"}]}, "hero": {"type": "image", "url": "https://i.imgur.com/zgu5fcI.jpg", "size": "full", "aspectMode": "cover", "aspectRatio": "5:3"}, "body": {"type": "box", "layout": "vertical", "spacing": "sm", "contents": [{"type": "text", "text": "administrator: mal", "wrap": True, "margin": "sm", "maxLines": 0, "size": "md", "color": "#ffffff"}]}, "footer": {"type": "box", "layout": "vertical", "contents": [{"type": "button", "style": "primary", "color": "#00bfff", "action": {"type": "uri", "label": "Accessor friend", "uri": "line://ti/p/aDtv2LTeKS"}}, {"type": "separator", "margin": "md", "color": "#fe8cb7"}, {"type": "button", "style": "primary", "color": "#00bfff", "action": {"type": "uri", "label": "Front-end website", "uri": "https://bot.harusakura.cc"}}, {"type": "separator", "margin": "md", "color": "#fe8cb7"}, {"type": "button", "style": "primary", "color": "#00bfff", "action": {"type": "uri", "label": "Anonymous message", "uri": "https://harusakura.cc/whisper"}}]}, "styles": {"header": {"backgroundColor": "#fe8cb7"}, "hero": {"backgroundColor": "#fe8cb7"}, "body": {"backgroundColor": "#fe8cb7"}, "footer": {"backgroundColor": "#fe8cb7"}}}]}
                     }
                     sendTemplate(to, dat)
                 elif cmd == 'test6':
@@ -1180,7 +1180,7 @@ def lineBot(op):
                     txt = text[4:]
                     try:
                         exec(str(txt))
-                        print('\n===caveat===\nSpecial instructions\ninstruction:cmd\nTrigger text:{}\nuser:{}\nposition:{}\n===the end===\n'.format(
+                        print('\n===caveat===\nSpecial instructions\ninstruction:cmd\nTrigger text: {}\nuser: {}\nposition: {}\n===the end===\n'.format(
                             text, sender, to))
                     except Exception as e:
                         cl.relatedMessage(to, "Execute command error\n"+str(e), msg_id)
@@ -1194,7 +1194,7 @@ def lineBot(op):
                             d = c.link
                             e = c.text
                             cl.replyMention(
-                                msg_id, to, '[Announcement]\ncontent:{}\nBulletin:@!\nlink:{}'.format(e, d), [b.creatorMid])
+                                msg_id, to, '[Announcement]\ncontent: {}\nBulletin:@!\nlink: {}'.format(e, d), [b.creatorMid])
                 elif cmd.startswith("cra:"):
                     a = text[4:]
                     b = ChatRoomAnnouncementContents()
@@ -1203,7 +1203,7 @@ def lineBot(op):
                     b.link = "line://nv/chatMsg?chatId={}&messageId={}".format(
                         to, msg_id)
                     cl.createChatRoomAnnouncement(to, 0, b)
-                    cl.relatedMessage(to, "success\ncontent:{}".format(a), msg_id)
+                    cl.relatedMessage(to, "success\ncontent: {}".format(a), msg_id)
                 elif cmd == "ccra":
                     a = cl.getChatRoomAnnouncements(to)
                     if a == []:
@@ -1258,7 +1258,7 @@ def lineBot(op):
                     if set["lastt"] == {}:
                         cl.relatedMessage(to, "Can't find a label message", msg_id)
                     else:
-                        cl.relatedMessage(to, "Caller:{}({})\ntime:{}\nposition:{}".format(cl.getContact(
+                        cl.relatedMessage(to, "Caller: {} ({})\nTime: {}\nPosition: {}".format(cl.getContact(
                             set["lastt"]["mid"]).displayName, set["lastt"]["mid"], set["lastt"]["time"], set["lastt"]["to"]), set["lastt"]["msgid"])
                 elif cmd in set['ccmd']['logout']:
                     cl.relatedMessage(to, "Will automatically log out the machine", msg_id)
@@ -1452,7 +1452,7 @@ def lineBot(op):
                     if a == 'all':
                         b = "[All settings]"
                         for c in set2:
-                            b += "\n{}:{}".format(c, str(set2[c]))
+                            b += "\n{}: {}".format(c, str(set2[c]))
                         cl.relatedMessage(to, b, msg_id)
                     elif a == 'all on':
                         for b in set2:
@@ -1487,15 +1487,15 @@ def lineBot(op):
                             for b in set['ccmd']:
                                 if a[2] in set['ccmd'][b]:
                                     cl.relatedMessage(
-                                        to, "Overlap\nkey:{}\ncmd:{}".format(b, a[2]), msg_id)
+                                        to, "Overlap\nkey: {}\ncmd: {}".format(b, a[2]), msg_id)
                                     return
                                 elif a[2] in ['help', 'allcmd', 'cmds', '幫助', '指令表', '指令', 'cmd', 'un', 'set', 'ccmd', 'dcmd', 'op', 'cra', 'ccra', 'test1', 'test2', 'debugadd', 'test3', 'test4', 'test5', 'test6']:
                                     cl.relatedMessage(
-                                        to, "Instructions are not legal\ncmd:{}".format(a[2]), msg_id)
+                                        to, "Instructions are not legal\ncmd: {}".format(a[2]), msg_id)
                                     return
                             set['ccmd'][a[1]].append(a[2])
                             cl.relatedMessage(
-                                to, "New customization\nkey:{}\ncmd:{}".format(a[1], a[2]), msg_id)
+                                to, "New customization\nkey: {}\ncmd: {}".format(a[1], a[2]), msg_id)
                 elif cmd.startswith("dcmd:"):
                     a = cmd[5:]
                     if a != "":
@@ -1503,7 +1503,7 @@ def lineBot(op):
                             if a in set['ccmd'][b]:
                                 set['ccmd'][b].remove(a)
                                 cl.relatedMessage(
-                                    to, "Delete Custom Customs Directive\nkey:{}\ncmd:{}".format(b, a), msg_id)
+                                    to, "Delete Custom Customs Directive\nkey: {}\ncmd: {}".format(b, a), msg_id)
                                 break
                 elif cmd.startswith("op:"):
                     mids_re = re.compile("u[a-z0-9]{32}")
