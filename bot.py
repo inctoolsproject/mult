@@ -152,13 +152,11 @@ def lineBot(op):
             return
         if op.type in [5]:
             cl.findAndAddContactsByMid(op.param1)
-            cl.sendMention(op.param1, f"thank @! Join me as a friend!\nBot Mid: {clMID}\nYour Mid: {op.param1}", [op.param1])
         elif op.type in [13, 124]:
             if clMID in op.param3:
                 if set2["jg"] == True:
                     cl.acceptGroupInvitation(op.param1)
                     group = cl.getGroup(op.param1)
-                    cl.sendMention(op.param1, f"Join success\n[Group name] {str(group.name)}\n[Number] {str(len(group.members))}people\n[GID] {str(group.id)}\n[Invr] @!", [op.param2])
             else:
                 cl.sendMention(op.param1, "ya @! group inv @!", [op.param2, op.param3])
         elif op.type in [15,128]:
@@ -170,7 +168,6 @@ def lineBot(op):
         elif op.type in [22]:
             if clMID in op.param3:
                 room = cl.getRoom(op.param1)
-                cl.sendMention(op.param1, f"Join success\n[Number] {str(len(room.contacts))}people\n[RID] {str(room.mid)}\n[Invr] @!", [op.param2])
                 if set2["lr"]:
                     cl.leaveRoom(op.param1)
             else:
@@ -229,8 +226,6 @@ def lineBot(op):
                             group = cl.findGroupByTicket(ticket_id)
                             cl.acceptGroupInvitationByTicket(
                                 group.id, ticket_id)
-                            cl.relatedMessage(to, "Join success\n[Group name]{}\n[Number]{}people\n[Group URL ID]{}\n[GID]{}".format(
-                                str(group.name), str(len(group.members)), str(ticket_id), str(group.id)), msg_id)
                         except Exception as e:
                             if str(e.reason) == "request blocked":
                                 cl.relatedMessage(to, "Current account regulation", msg_id)
@@ -291,7 +286,7 @@ def lineBot(op):
                 if cmd in ['help', 'allcmd', 'cmds', '幫助', '指令表', '指令']:
                     ret_ = "[General instruction]"
                     for a in set['ccmd']:
-                        ret_ += "\n{}(key: {})".format(set['ccmd'][a], a)
+                        ret_ += "\n{} (key: {})".format(set['ccmd'][a], a)
                     ret_ += "\n\n[Other instructions]\n[Retrieve message]\nun:number\n[Permission adjustment]\nop:(@/mid)s\n[Switch function method]\nset:function name\n[Customary command method]\n+)ccmd:key:cmd\n-)dcmd:cmd"
                     cl.relatedMessage(to, ret_, msg_id)
                 elif cmd == 'test1':
@@ -470,7 +465,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Mount".format(uda0),
+                                                                        "text": "{} Mount".format(uda0),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -486,7 +481,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Mount".format(uda2),
+                                                                        "text": "{} Mount".format(uda2),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -502,7 +497,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Mount".format(uda3),
+                                                                        "text": "{} Mount".format(uda3),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -641,7 +636,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Join".format(uda4),
+                                                                        "text": "{} Join".format(uda4),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -672,7 +667,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Join".format(uda6),
+                                                                        "text": "{} Join".format(uda6),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -703,7 +698,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Authority".format(uda8),
+                                                                        "text": "{} Authority".format(uda8),
                                                                         "align": "end"
                                                                     }
                                                                 ]
@@ -719,7 +714,7 @@ def lineBot(op):
                                                                     },
                                                                     {
                                                                         "type": "text",
-                                                                        "text": "{}Black single".format(uda9),
+                                                                        "text": "{} Black single".format(uda9),
                                                                         "align": "end"
                                                                     }
                                                                 ]
