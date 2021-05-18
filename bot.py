@@ -156,24 +156,11 @@ def lineBot(op):
             if clMID in op.param3:
                 if set2["jg"] == True:
                     cl.acceptGroupInvitation(op.param1)
-                    group = cl.getGroup(op.param1)
-            else:
-                cl.sendMention(op.param1, "ya @! group inv @!", [op.param2, op.param3])
-        elif op.type in [15,128]:
-            cl.sendMention(op.param1, "bye @! group out", [op.param2])
-        elif op.type in [17,130]:
-            cl.sendMention(op.param1, "hi @! group join", [op.param2])
-        elif op.type in [19,133]:
-            cl.sendMention(op.param1, "oh @! group kick @!", [op.param2, op.param3])
         elif op.type in [22]:
             if clMID in op.param3:
                 room = cl.getRoom(op.param1)
                 if set2["lr"]:
                     cl.leaveRoom(op.param1)
-            else:
-                cl.sendMention(op.param1, "hi @! room join inv by @!", [op.param3, op.param2])
-        elif op.type in [24]:
-            cl.sendMention(op.param1, "bye @! room out", [op.param2])
         elif op.type in [25, 26]:
             msg = op.message
             text = msg.text
