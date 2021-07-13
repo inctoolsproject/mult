@@ -63,7 +63,7 @@ print("""
 ┃ ⋙ Last update time : 2021/04/03 (UTC+08)
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━""")
 ####################################################
-cl = LINE("soriyak962@naymeo.com","rahmagila123")
+cl = LINE("prosox734@gmail.com","rahmagila123")
 ####################################################
 clMID = cl.profile.mid
 oepoll = OEPoll(cl)
