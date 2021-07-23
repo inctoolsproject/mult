@@ -232,19 +232,16 @@ def lineBot(op):
                     arg += "\nTypes of: voice"
                     arg += "\nInitiator: @!"
                     arg += f"\nStart time: {timeNow}"
-                    cl.replyMention(msg_id, to, arg, [sender])
                 if c == 'VIDEO' and b == "S":
                     arg = "Start call"
                     arg += "\nTypes of: Video"
                     arg += "\nInitiator: @!"
                     arg += f"\nStart time: {timeNow}"
-                    cl.replyMention(msg_id, to, arg, [sender])
                 if c == 'LIVE' and b == "S":
                     arg = "Start call"
                     arg += "\nTypes of: LIVE"
                     arg += "\nInitiator: @!"
                     arg += f"\nStart time: {timeNow}"
-                    cl.replyMention(msg_id, to, arg, [sender])
                 else:
                     mills = int(msg.contentMetadata["DURATION"])
                     seconds = (mills / 1000) % 60
@@ -254,21 +251,18 @@ def lineBot(op):
                         arg += "\nInitiator: @!"
                         arg += f"\nEnd Time: {timeNow}"
                         arg += f"\nduration: {seconds} second"
-                        cl.replyMention(msg_id, to, arg, [sender])
                     if c == "VIDEO" and b == "E":
                         arg = "End talk"
                         arg += "\nTypes of: Video"
                         arg += "\nInitiator: @!"
                         arg += f"\nEnd Time: {timeNow}"
                         arg += f"\nduration: {seconds} second"
-                        cl.replyMention(msg_id, to, arg, [sender])
                     if c == "LIVE" and b == "E":
                         arg = "End talk"
                         arg += "\nTypes of: LIVE"
                         arg += "\nInitiator: @!"
                         arg += f"\nEnd Time: {timeNow}"
                         arg += f"\nduration: {seconds} second"
-                        cl.replyMention(msg_id, to, arg, [sender])
             if sender in set["owner"]:
                 if cmd in ['help', 'allcmd', 'cmds', '幫助', '指令表', '指令']:
                     ret_ = "[General instruction]"
