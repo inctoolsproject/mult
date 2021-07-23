@@ -1500,8 +1500,6 @@ def lineBot(op):
                         else:
                             set["owner"].append(target)
                     cl.relatedMessage(to, "Permission adjustment", msg_id)
-        elif op.type in [32,126]:
-            cl.sendMention(op.param1, "oh @! group cancel inv @!", [op.param2, op.param3])
         elif op.type in [60]:
             pass
         elif op.param1 in test["debug"] or set2["debugall"]:
