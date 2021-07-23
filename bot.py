@@ -89,13 +89,13 @@ set = {
 set2 = {
     "jg": True,
     "lj": True,
-    "lg": True,
+    "lg": False,
     "lr": False,
     "apro": False,
-    "protect": True,
+    "protect": False,
     "getmid": True,
     "flwrm": False,
-    "debugall": True
+    "debugall": False
 }
 test = {
     "debug": ["c846fec69c4f52feb32f00cf8970a95bc"],
