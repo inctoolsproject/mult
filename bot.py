@@ -1335,8 +1335,7 @@ def lineBot(op):
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
                                 txt += u'@YTER \n'
-                            cl.sendReplyMessage(msg_id, to, txt, {'STKVER': '100', 'STKID': str(
-                                a+1), 'STKPKGID': '1', u'MENTION': json.dumps({'MENTIONEES': b})}, 7)
+                            cl.sendReplyMessage(msg_id, to, txt, {'STKVER': '1', 'STKID': '12228774', 'STKPKGID': '1302449', u'MENTION': json.dumps({'MENTIONEES': b})}, 7)
                     elif msg.toType == 2:
                         group = cl.getGroup(to)
                         nama = [contact.mid for contact in group.members]
@@ -1350,8 +1349,7 @@ def lineBot(op):
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
                                 txt += u'@YTER \n'
-                            cl.sendReplyMessage(msg_id, to, txt, {'STKVER': '100', 'STKID': str(
-                                a+1), 'STKPKGID': '1', u'MENTION': json.dumps({'MENTIONEES': b})}, 7)
+                            cl.sendReplyMessage(msg_id, to, txt, {'STKVER': '1', 'STKID': '12228774', 'STKPKGID': '1302449', u'MENTION': json.dumps({'MENTIONEES': b})}, 7)
                 elif cmd in set['ccmd']['ltag']:
                     if msg.toType == 1:
                         room = cl.getRoom(to)
