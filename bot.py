@@ -43,12 +43,12 @@ except ImportError:
 ####################################################
 os.system('clear')
 ####################################################
-cl = LINE("prosox734@gmail.com","rahmagila123")
+cl = LINE("svrlego115@gmail.com","rahmagila123")
 ####################################################
 clMID = cl.profile.mid
 oepoll = OEPoll(cl)
 set = {
-    "owner": ["u8b9d115e85202db06eb798e8c1b40ae9", "u9be8862cb884bde356d0e41fb6850514"],
+    "owner": ["u9be8862cb884bde356d0e41fb6850514"],
     "ccmd": {
         "liffurl": [".liffurl"],
         "time": [".time"],
