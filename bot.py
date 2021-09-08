@@ -1226,7 +1226,7 @@ def lineBot(op):
                     else:
                         mc = "[Permissions list]"
                         arr = []
-                        mention = "@YTER "
+                        mention = "@mal "
                         for mi_d in set["owner"]:
                             mc += "\n➲"
                             slen = str(len(mc))
@@ -1303,7 +1303,7 @@ def lineBot(op):
                                 b.append(
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
-                                txt += u'@YTER \n'
+                                txt += u'@mal \n'
                             cl.sendReplyMessage(msg_id, to, text=txt, contentMetadata={
                                                 u'MENTION': json.dumps({'MENTIONEES': b})}, contentType=0)
                     elif msg.toType == 2:
@@ -1318,7 +1318,7 @@ def lineBot(op):
                                 b.append(
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
-                                txt += u'@YTER \n'
+                                txt += u'@mal \n'
                             cl.sendReplyMessage(msg_id, to, text=txt, contentMetadata={
                                                 u'MENTION': json.dumps({'MENTIONEES': b})}, contentType=0)
                 elif cmd in set['ccmd']['stag']:
@@ -1334,7 +1334,7 @@ def lineBot(op):
                                 b.append(
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
-                                txt += u'@YTER \n'
+                                txt += u'@mal \n'
                             cl.sendReplyMessage(msg_id, to, txt, {'STKVER': '1', 'STKID': '12228774', 'STKPKGID': '1302449', u'MENTION': json.dumps({'MENTIONEES': b})}, 7)
                     elif msg.toType == 2:
                         group = cl.getGroup(to)
@@ -1348,7 +1348,7 @@ def lineBot(op):
                                 b.append(
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
-                                txt += u'@YTER \n'
+                                txt += u'@mal \n'
                             cl.sendReplyMessage(msg_id, to, txt, {'STKVER': '1', 'STKID': '12228774', 'STKPKGID': '1302449', u'MENTION': json.dumps({'MENTIONEES': b})}, 7)
                 elif cmd in set['ccmd']['ltag']:
                     if msg.toType == 1:
@@ -1363,7 +1363,7 @@ def lineBot(op):
                                 b.append(
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
-                                txt += u'@YTER \n'
+                                txt += u'@mal \n'
                             cl.sendTagLocation(
                                 to, txt, {u'MENTION': json.dumps({'MENTIONEES': b})})
                     elif msg.toType == 2:
@@ -1378,7 +1378,7 @@ def lineBot(op):
                                 b.append(
                                     {"S": str(s), "E": str(s+6), "M": i.mid})
                                 s += 7
-                                txt += u'@YTER \n'
+                                txt += u'@mal \n'
                             cl.sendTagLocation(
                                 to, txt, {u'MENTION': json.dumps({'MENTIONEES': b})})
                 elif cmd.startswith('un:'):
